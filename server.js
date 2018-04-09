@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const methodOverride    = require('method-override');
+const routes            = require('./server/routes');
 const PORT = process.env.PORT || 8080;
 
 app.all('*', function(req,res,next){
@@ -10,7 +11,7 @@ app.all('*', function(req,res,next){
    next();
 });
 app.use(methodOverride("X-HTTP-Method-Override"));
-//routes(app);
+routes(app);
 
 app.listen(PORT,()=>{
     console.log('Server running on Port '+ PORT);
